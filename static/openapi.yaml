@@ -1,15 +1,15 @@
-openapi: 3.0.1
+openapi: "3.0.1"
 info:
   title: Caterfab DXF Plugin API
   description: API for uploading, extracting, and modifying DXF files for Caterfab
   version: "1.0.0"
 servers:
   - url: https://caterfab-dxf-plugin.onrender.com
-
 paths:
   /upload_dxf:
     post:
       summary: Upload a DXF file
+      operationId: upload_dxf
       requestBody:
         required: true
         content:
@@ -23,9 +23,11 @@ paths:
       responses:
         '200':
           description: Upload successful
+
   /extract_data:
     get:
       summary: Extract entity data from uploaded DXF
+      operationId: extract_data
       parameters:
         - in: query
           name: filename
@@ -35,9 +37,11 @@ paths:
       responses:
         '200':
           description: List of entities found
+
   /amend_drawing:
     post:
       summary: Apply modifications to a DXF
+      operationId: amend_drawing
       requestBody:
         required: true
         content:
@@ -52,9 +56,11 @@ paths:
       responses:
         '200':
           description: Drawing modified and downloadable link provided
+
   /download_dxf:
     get:
       summary: Download a modified DXF
+      operationId: download_dxf
       parameters:
         - in: query
           name: filename
