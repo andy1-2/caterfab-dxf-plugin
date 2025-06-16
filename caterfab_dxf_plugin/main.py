@@ -13,8 +13,7 @@ MODIFIED_DIR = "modified"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 os.makedirs(MODIFIED_DIR, exist_ok=True)
 
-# Serve openapi.yaml and other static files
-app.mount("/", StaticFiles(directory=".", html=True), name="static")
+app.mount("/", StaticFiles(directory="caterfab_dxf_plugin", html=True), name="static")
 
 @app.post("/upload_dxf")
 async def upload_dxf(file: UploadFile = File(...)):
