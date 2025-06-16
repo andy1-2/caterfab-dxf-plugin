@@ -4,7 +4,9 @@ info:
   description: API for uploading, extracting, and modifying DXF files for Caterfab
   version: "1.0.0"
 servers:
-  - url: https://yourdomain.com
+  - url: servers:
+  - url: https://caterfab-dxf-plugin.onrender.com
+
 paths:
   /upload_dxf:
     post:
