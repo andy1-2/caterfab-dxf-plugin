@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Caterfab DXF Assistant",
+  "name_for_model": "caterfab_dxf_assistant",
+  "description_for_human": "Upload and amend Caterfab DXF drawings via text commands.",
+  "description_for_model": "Use this plugin to upload DXF drawings, extract known Caterfab components, and modify or regenerate the design.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://yourdomain.com/openapi.yaml"
+  },
+  "logo_url": "https://yourdomain.com/logo.png",
+  "contact_email": "support@caterfab.co.uk",
+  "legal_info_url": "https://caterfab.co.uk/legal"
+}
