@@ -7,13 +7,12 @@ import ezdxf
 
 app = FastAPI()
 
-# Create directories for uploads and modified files
 UPLOAD_DIR = "uploads"
 MODIFIED_DIR = "modified"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 os.makedirs(MODIFIED_DIR, exist_ok=True)
 
-# Serve openapi.yaml and other static files from root directory
+# Serve static files like openapi.yaml
 app.mount("/", StaticFiles(directory=".", html=True), name="static")
 
 @app.post("/upload_dxf")
@@ -48,8 +47,6 @@ def amend_drawing(filename: str = Form(...), new_length: float = Form(...)):
 
     doc = ezdxf.readfile(input_path)
     msp = doc.modelspace()
-
-    # Example modification: add a horizontal line to represent new length
     msp.add_line((0, 0), (new_length, 0))
 
     output_path = os.path.join(MODIFIED_DIR, f"modified_{filename}")
@@ -67,4 +64,4 @@ def download_dxf(filename: str):
     return FileResponse(path=file_path, media_type='application/dxf', filename=filename)
 
 if __name__ == "__main__":
-
+    uvicorn.run("main:app", host="0.0.0.0", port=10000, reload=True)
