@@ -7,12 +7,13 @@ import ezdxf
 
 app = FastAPI()
 
+# Ensure directories exist
 UPLOAD_DIR = "uploads"
 MODIFIED_DIR = "modified"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 os.makedirs(MODIFIED_DIR, exist_ok=True)
 
-# Serve static files like openapi.yaml
+# Serve openapi.yaml and other static files
 app.mount("/", StaticFiles(directory=".", html=True), name="static")
 
 @app.post("/upload_dxf")
@@ -64,4 +65,4 @@ def download_dxf(filename: str):
     return FileResponse(path=file_path, media_type='application/dxf', filename=filename)
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=10000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0",
