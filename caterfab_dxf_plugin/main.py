@@ -14,6 +14,14 @@ def get_openapi_yaml():
         yaml_content = f.read()
     return Response(content=yaml_content, media_type="text/yaml")
 
+from fastapi.responses import Response
+
+@app.get("/openapi.yaml")
+def get_openapi_yaml():
+    with open("caterfab_dxf_plugin/openapi.yaml", "r") as f:
+        yaml_content = f.read()
+    return Response(content=yaml_content, media_type="text/yaml")
+
 
 # Ensure directories exist
 UPLOAD_DIR = "uploads"
